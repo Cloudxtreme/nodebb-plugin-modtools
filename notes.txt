@@ -1,0 +1,36 @@
+* I got this from NodeBB / public / src / admin / manage / users.js  */
+
+"use strict";
+/* global socket, define, templates, bootbox, app, ajaxify,  */
+define('admin/manage/users', ['admin/modules/selectable'], function(selectable) {
+	var Users = {};
+
+
+$('.ban-user').on('click', function() {
+			var uids = getSelectedUids();
+			if (!uids.length) {
+				return false;
+			}
+
+			bootbox.confirm('Do you really want to ban?', function(confirm) {
+				if (confirm) {
+					socket.emit('admin.user.banUsers', uids, done('User(s) banned!', '.ban', true));
+				}
+			});
+			return false;
+		});
+
+/* This is the follow button on the profile page in NodeBB / public / src / client / account / profile.js  */
+
+
+$('#follow-btn').on('click', function() {
+			return toggleFollow('follow');
+		});
+		
+		$('#follow-btn').on('click', function() {
+			return toggleFollow('follow');
+		});
+
+		/* This is the visual part of the admin CP  */
+		
+		/home/ralkage/nodebb/public/templates/admin/manage
